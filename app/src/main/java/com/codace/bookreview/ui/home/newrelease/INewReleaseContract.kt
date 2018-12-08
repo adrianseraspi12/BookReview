@@ -8,7 +8,7 @@ interface INewReleaseContract {
 
         fun setPresenter(presenter: Presenter)
 
-        fun updateList(listOfNewReleaseBooks: MutableList<Model.VolumeInfo>)
+        fun updateList(listOfNewReleaseBooks: MutableList<Model.ItemBook>)
 
     }
 

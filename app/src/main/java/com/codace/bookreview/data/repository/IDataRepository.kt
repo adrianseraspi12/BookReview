@@ -1,4 +1,6 @@
-package com.codace.bookreview.data
+package com.codace.bookreview.data.repository
+
+import com.codace.bookreview.data.Model
 
 interface IDataRepository {
 
@@ -12,6 +14,7 @@ interface IDataRepository {
 
     fun getListOfBooks(query: String, orderBy: String,
                        startIndex: Int, itemsPerPage: Int,
-                       listener: Listener<Model.ListBook?>)
+                       listener: Listener<Model.ListBook?>
+    )
 
 }

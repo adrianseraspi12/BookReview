@@ -1,20 +1,18 @@
 package com.codace.bookreview.ui.home
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
+import com.codace.bookreview.inflate
 import kotlinx.android.synthetic.main.row_item_book.view.*
 
-class BooksAdapter(val list:List<Model.VolumeInfo>):
+class BooksAdapter(val list:List<Model.ItemBook>):
         RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.row_item_book, parent, false)
-
+        val view = parent.inflate(R.layout.row_item_book, false)
         return ViewHolder(view)
     }
 
@@ -29,9 +27,9 @@ class BooksAdapter(val list:List<Model.VolumeInfo>):
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bind(book: Model.VolumeInfo) {
+        fun bind(book: Model.ItemBook) {
 
-            itemView.item_title.text = book.title
+            itemView.item_title.text = book.volumeInfo.title
 
         }
 

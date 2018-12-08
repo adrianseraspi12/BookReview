@@ -1,34 +1,33 @@
 package com.codace.bookreview.ui.home.newrelease
 
-import com.codace.bookreview.data.IDataRepository
 import com.codace.bookreview.data.Model
+import com.codace.bookreview.data.repository.IDataRepository
+import com.github.ajalt.timberkt.Timber
 
-class NewReleasePresenter: INewReleaseContract.Presenter,
-        IDataRepository.Listener<Model.ListBook?> {
+class NewReleasePresenter(
+    private var dataRepo: IDataRepository,
+    private var mView: INewReleaseContract.View):
+    INewReleaseContract.Presenter, IDataRepository.Listener<Model.ListBook?> {
 
-    private var dataRepo: IDataRepository
-    private var mView: INewReleaseContract.View
-
-    constructor(dataRepo: IDataRepository,
-                mView: INewReleaseContract.View) {
-        this.dataRepo = dataRepo
-        this.mView = mView
-
+    init {
         mView.setPresenter(this)
     }
 
     override fun loadNewReleaseBooks(startIndex: Int, itemsPerPage: Int) {
-        dataRepo.getListOfBooks("", "newest", startIndex, itemsPerPage, this)
+        dataRepo.getListOfBooks("\"\"", "newest", startIndex, itemsPerPage, this)
     }
 
     override fun onDataAvailable(data: Model.ListBook?) {
         if (data != null) {
-            mView.updateList(data.items)
+            for (itemBook: Model.ItemBook in data.items) {
+                Timber.i{"ID = ${itemBook.id}"}
+            }
+            mView.updateList(data.items.toMutableList())
         }
     }
 
     override fun onDataNotAvailable(message: String) {
-
+        Timber.i{"Presenter = $message"}
     }
 
 }

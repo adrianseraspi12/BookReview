@@ -8,13 +8,13 @@ interface IRelevantContract {
 
         fun setPresenter(presenter: Presenter)
 
-        fun setUpAdapter(listOfRelevantBooks: List<Model.VolumeInfo>)
+        fun setUpAdapter(listOfRelevantBooks: MutableList<Model.ItemBook>)
 
     }
 
     interface Presenter {
 
-        fun loadRelevantBooks(itemsPerPage: Int)
+        fun loadRelevantBooks(startIndex: Int, itemsPerPage: Int)
 
     }
 

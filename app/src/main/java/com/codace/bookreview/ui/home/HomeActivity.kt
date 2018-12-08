@@ -1,18 +1,22 @@
 package com.codace.bookreview.ui.home
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.IdRes
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.codace.bookreview.R
-import com.codace.bookreview.data.DataRepositoryImpl
+import com.codace.bookreview.data.repository.DataRepositoryImpl
 import com.codace.bookreview.ui.home.newrelease.NewReleaseFragment
 import com.codace.bookreview.ui.home.newrelease.NewReleasePresenter
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.codace.bookreview.ui.home.relevant.RelevantFragment
+import com.codace.bookreview.ui.home.relevant.RelevantPresenter
+import com.github.ajalt.timberkt.Timber
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -23,20 +27,20 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-        val newReleaseFragment: NewReleaseFragment = NewReleaseFragment.newInstance
+        val newReleaseFragment: NewReleaseFragment = NewReleaseFragment.newInstance()
+        val relevantFragment: RelevantFragment = RelevantFragment.newInstance()
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.home_new_release_container,
-                        newReleaseFragment)
-                .commit()
+        loadFragment(R.id.home_new_release_container, newReleaseFragment)
+        loadFragment(R.id.home_relevant_container, relevantFragment)
 
         NewReleasePresenter(DataRepositoryImpl(), newReleaseFragment)
+        RelevantPresenter(DataRepositoryImpl(), relevantFragment)
 
         fab.setOnClickListener { view ->
             Snackbar.make(
                     view,
                     "Replace with your own action",
-                    BaseTransientBottomBar.LENGTH_LONG)
+                    Snackbar.LENGTH_LONG)
                     .setAction("Action", null)
                     .show()
         }
@@ -52,6 +56,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        Timber.i { "Home Activity OnCreate" }
+    }
+
+    private fun loadFragment(@IdRes containerViewId: Int, fragment: Fragment) {
+        supportFragmentManager
+                .beginTransaction()
+                .replace(containerViewId, fragment)
+                .commit()
     }
 
     override fun onBackPressed() {
