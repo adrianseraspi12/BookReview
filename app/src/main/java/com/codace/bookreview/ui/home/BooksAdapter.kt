@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
-import com.codace.bookreview.inflate
-import kotlinx.android.synthetic.main.row_item_book.view.*
+import com.codace.bookreview.utils.ext.inflate
+import com.codace.bookreview.utils.ext.load
+import kotlinx.android.synthetic.main.row_horizontal_item_book.view.*
 
-class BooksAdapter(val list:List<Model.ItemBook>):
+class BooksAdapter(private val list:List<Model.ItemBook>):
         RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = parent.inflate(R.layout.row_item_book, false)
+        val view = parent.inflate(R.layout.row_horizontal_item_book, false)
         return ViewHolder(view)
     }
 
@@ -28,8 +29,12 @@ class BooksAdapter(val list:List<Model.ItemBook>):
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(book: Model.ItemBook) {
-
             itemView.item_title.text = book.volumeInfo.title
+            itemView.item_rating.text = book.volumeInfo.averageRating.toString()
+            itemView.item_thumbnail.load(book.volumeInfo.imageLinks.smallThumbnail) {
+                it.centerCrop()
+                it.fit()
+            }
 
         }
 

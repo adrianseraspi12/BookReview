@@ -9,6 +9,9 @@ object Model {
     data class VolumeInfo(val title: String, val subtitle: String,
                           val publisher: String, val publishedDate:
                           String, val description: String, val averageRating: Float,
-                          val ratingsCount: Int, val authors: List<String>)
+                          val ratingsCount: Int, val authors: List<String>,
+                          val imageLinks: ImageLinks)
+
+    data class ImageLinks(val smallThumbnail: String, val thumbnail: String)
 
 }

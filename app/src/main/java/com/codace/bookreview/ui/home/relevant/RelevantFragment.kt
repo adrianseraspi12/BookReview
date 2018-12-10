@@ -11,7 +11,7 @@ import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
 import com.codace.bookreview.ui.home.BooksAdapter
 
-import kotlinx.android.synthetic.main.fragment_relevant.*
+import kotlinx.android.synthetic.main.fragment_home_relevant.*
 
 class RelevantFragment : Fragment(), IRelevantContract.View {
 
@@ -25,7 +25,7 @@ class RelevantFragment : Fragment(), IRelevantContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_relevant, container, false)
+        return inflater.inflate(R.layout.fragment_home_relevant, container, false)
     }
 
     override fun onStart() {

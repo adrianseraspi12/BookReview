@@ -8,6 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codace.bookreview.R
 import com.codace.bookreview.data.repository.DataRepositoryImpl
 import com.codace.bookreview.ui.home.newrelease.NewReleaseFragment
@@ -27,7 +28,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-        val newReleaseFragment: NewReleaseFragment = NewReleaseFragment.newInstance()
+        val newReleaseFragment = NewReleaseFragment.newInstance()
         val relevantFragment: RelevantFragment = RelevantFragment.newInstance()
 
         loadFragment(R.id.home_new_release_container, newReleaseFragment)

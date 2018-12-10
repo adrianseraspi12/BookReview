@@ -1,6 +1,5 @@
 package com.codace.bookreview.ui.home.newrelease
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,7 @@ import androidx.fragment.app.Fragment
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
 import com.codace.bookreview.ui.home.BooksAdapter
-import com.github.ajalt.timberkt.Timber
-import kotlinx.android.synthetic.main.fragment_new_release.*
+import kotlinx.android.synthetic.main.fragment_home_new_release.*
 
 class NewReleaseFragment : Fragment(), INewReleaseContract.View {
 
@@ -25,7 +23,7 @@ class NewReleaseFragment : Fragment(), INewReleaseContract.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_new_release, container, false)
+        return inflater.inflate(R.layout.fragment_home_new_release, container, false)
     }
 
     override fun onStart() {
