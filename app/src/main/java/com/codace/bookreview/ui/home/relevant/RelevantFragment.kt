@@ -5,13 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
 import com.codace.bookreview.ui.home.BooksAdapter
-
-import kotlinx.android.synthetic.main.fragment_home_relevant.*
+import kotlinx.android.synthetic.main.fragment_book_vertical_list.*
 
 class RelevantFragment : Fragment(), IRelevantContract.View {
 
@@ -25,7 +24,7 @@ class RelevantFragment : Fragment(), IRelevantContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home_relevant, container, false)
+        return inflater.inflate(R.layout.fragment_book_vertical_list, container,false)
     }
 
     override fun onStart() {
@@ -38,7 +37,7 @@ class RelevantFragment : Fragment(), IRelevantContract.View {
     }
 
     override fun setUpAdapter(listOfRelevantBooks: MutableList<Model.ItemBook>) {
-        relevant_list.adapter = BooksAdapter(listOfRelevantBooks)
+        book_list.adapter = BooksAdapter(listOfRelevantBooks)
     }
 
 }

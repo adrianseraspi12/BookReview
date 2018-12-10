@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
 import com.codace.bookreview.ui.home.BooksAdapter
-import kotlinx.android.synthetic.main.fragment_home_new_release.*
+import kotlinx.android.synthetic.main.fragment_book_vertical_list.*
 
 class NewReleaseFragment : Fragment(), INewReleaseContract.View {
 
@@ -23,7 +24,7 @@ class NewReleaseFragment : Fragment(), INewReleaseContract.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_home_new_release, container, false)
+        return inflater.inflate(R.layout.fragment_book_vertical_list, container, false)
     }
 
     override fun onStart() {
@@ -36,6 +37,6 @@ class NewReleaseFragment : Fragment(), INewReleaseContract.View {
     }
 
     override fun updateList(listOfNewReleaseBooks: MutableList<Model.ItemBook>) {
-        new_release_list.adapter = BooksAdapter(listOfNewReleaseBooks)
+        book_list.adapter = BooksAdapter(listOfNewReleaseBooks)
     }
 }
