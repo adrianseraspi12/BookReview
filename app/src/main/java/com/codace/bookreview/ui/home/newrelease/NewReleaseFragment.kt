@@ -29,7 +29,7 @@ class NewReleaseFragment : Fragment(), INewReleaseContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter.loadNewReleaseBooks(0, 5)
+        presenter.loadNewReleaseBooks(0, 10)
     }
 
     override fun setPresenter(presenter: INewReleaseContract.Presenter) {
