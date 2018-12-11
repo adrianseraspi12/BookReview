@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:name=".BookReview"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
+            android:name=".BookReview"
             android:theme="@style/AppTheme">
         <activity
                 android:name=".ui.home.HomeActivity"
@@ -21,8 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.newrelease.NewReleaseActivity">
-        </activity>
+        <activity android:name=".ui.home.newrelease.NewReleaseActivity"
+            android:label="New Release Books"/>
+        <activity android:name=".ui.home.relevant.RelevantActivity"
+            android:label="Relevant Books"/>
     </application>
 
 </manifest>

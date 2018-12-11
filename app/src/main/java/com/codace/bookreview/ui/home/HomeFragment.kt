@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
 import com.codace.bookreview.ui.home.newrelease.NewReleaseActivity
+import com.codace.bookreview.ui.home.relevant.RelevantActivity
 
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -36,12 +37,17 @@ class HomeFragment : Fragment(), IHomeContract.View {
             startActivity(Intent(context, NewReleaseActivity::class.java))
         }
 
+        home_relevant_button.setOnClickListener {
+            startActivity(Intent(context, RelevantActivity::class.java))
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.loadNewReleaseBooks(0, 5)
-        presenter.loadRelevantBooks(0, 5)
+        presenter.apply {
+            loadNewReleaseBooks(0, 5)
+            loadRelevantBooks(0, 5)
+        }
     }
 
     override fun setPresenter(presenter: IHomeContract.Presenter) {

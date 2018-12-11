@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.codace.bookreview.R
 import com.codace.bookreview.data.Model
@@ -29,7 +28,7 @@ class RelevantFragment : Fragment(), IRelevantContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter.loadRelevantBooks(0, 5)
+        presenter.loadRelevantBooks(0, 10)
     }
 
     override fun setPresenter(presenter: IRelevantContract.Presenter) {
